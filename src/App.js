@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import Nav from "../src/Components/Nav/Nav";
+import Cards from "../src/Components/Cards/Cards";
+import { useState } from "react";
+
+import { getCities } from "./Api";
 
 function App() {
+  const [cities, setCities] = useState([]);
+
+  async function apiRequest(city) {
+    let newCity = await getCities(city);
+
+    setCities((oldCities) => [...oldCities, newCity]);
+  }
+
+  function onClose(id) {
+    setCities((oldCities) => oldCities.filter((city) => city.id !== id));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav apiRequest={apiRequest} />
+
+      <Cards cities={cities} onClose={onClose} />
     </div>
   );
 }

@@ -1,0 +1,26 @@
+.card {
+  height: 170px;
+  width: 280px;
+  background-color: aquamarine;
+  position: relative;
+  border-radius: 5px;
+}
+
+.btn {
+  position: absolute;
+  background-color: green;
+  border-radius: 2px;
+  right: 0;
+  border: none;
+  margin: 3px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.name {
+  display: inline-block;
+  font-size: x-large;
+}
