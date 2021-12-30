@@ -1,20 +1,29 @@
 import React from "react";
 
-import style from "./Card.module.css";
+export default function Card({ name, min, max, img, setCities, id }) {
+  function onClose(id) {
+    setCities((oldCities) => oldCities.filter((city) => city.id !== id));
+  }
 
-export default function Card({ name, min, max, img, onClose }) {
   return (
-    <div className={style.card}>
-      <button className={style.btn} onClick={onClose}>
-        X
-      </button>
-      <h2 className={style.name}>{name}</h2>
-      <div className={style.info}>
-        <div className={style.temp}>
+    <div className="w-64 h-44 bg-slate-100 relative rounded-md">
+      <div className="flex bg-gray-500 text-gray-100 p-1  rounded-t-md">
+        <button
+          className="absolute bg-slate-100 border-none rounded-sm right-2.5  m-1.5  text-black w-5"
+          onClick={() => {
+            onClose(id);
+          }}
+        >
+          X
+        </button>
+        <h2 className="text-2xl inline-block text-slate-50">{name}</h2>
+      </div>
+      <div className="flex justify-evenly  my-7">
+        <div className="text-xl ">
           <h3>Min</h3>
           <h3>{`${min} °C`}</h3>
         </div>
-        <div className={style.temp}>
+        <div className="text-xl ">
           <h3>Max</h3>
           <h3>{`${max} °C`}</h3>
         </div>

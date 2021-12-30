@@ -1,9 +1,23 @@
 import React from "react";
 import { useState } from "react";
-import styles from "./SearchBar.modules.css";
 
-export default function SearchBar({ apiRequest }) {
+import { getCities } from "../../Api.js";
+
+export default function SearchBar({ setCities, setNotFound, setIsLoading }) {
   const [city, setCity] = useState([]);
+
+  async function apiRequest(city) {
+    let newCity = await getCities(city);
+
+    if (!newCity) {
+      setNotFound(true);
+      setIsLoading(false);
+    } else {
+      setNotFound(false);
+      setCities((oldCities) => [...oldCities, newCity]);
+      setIsLoading(false);
+    }
+  }
 
   function handleOnchange(e) {
     setCity(e.target.value);
@@ -11,6 +25,7 @@ export default function SearchBar({ apiRequest }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setIsLoading(true);
     apiRequest(city);
     setCity("");
   }
@@ -20,18 +35,19 @@ export default function SearchBar({ apiRequest }) {
       onSubmit={(e) => {
         handleSubmit(e);
       }}
-      style={{ display: "flex" }}
+      className="flex"
     >
       <input
-        class="form-control me-2"
         type="search"
-        placeholder="Search City..."
-        onChange={handleOnchange}
+        className="bg-purple-white shadow rounded border-0 p-2"
+        placeholder="Search by name..."
         value={city}
-        aria-label="Search"
+        onChange={handleOnchange}
       />
 
-      <input class="btn btn-outline-success" type="submit" value="Add" />
+      <button className="  bg-zinc-800  hover:bg-gray-500 text-white font-bold py-2 px-4 rounded ml-5">
+        Add
+      </button>
     </form>
   );
 }

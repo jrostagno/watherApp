@@ -1,24 +1,25 @@
 import React from "react";
 import Card from "../Card/Card";
-import styles from "./Cards.module.css";
 
-export default function Cards({ cities, onClose }) {
+export default function Cards({ cities, setCities }) {
   return (
-    <div className={styles.cards}>
-      {cities ? (
-        cities.map((c) => (
+    <div
+      className="grid p-8 grid-cols-3 gap-8 m-auto max-w-5xl"
+      style={{ gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))" }}
+    >
+      {cities.map((c) => (
+        <div>
           <Card
+            setCities={setCities}
+            key={c.id}
             id={c.id}
             min={c.min}
             max={c.max}
             name={c.name}
             img={c.img}
-            onClose={() => onClose(c.id)}
           />
-        ))
-      ) : (
-        <h1>City Not found</h1>
-      )}
+        </div>
+      ))}
     </div>
   );
 }

@@ -11,9 +11,11 @@ export const getCities = async (city) => {
     );
 
     let data = json.data;
+    console.log(data);
+    console.log(data.cod);
 
     if (data.cod === "404") {
-      return {};
+      return [];
     } else {
       let city = {
         min: Math.round(data.main.temp_min),
