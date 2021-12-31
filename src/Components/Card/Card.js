@@ -33,10 +33,10 @@ export default function Card({
         <h2 className="text-2xl inline-block text-slate-50  ml-3">{name}</h2>
       </div>
 
-      <p className="flex justify-start ml-4 p-1">Wheather: {weather}</p>
+      <p className="flex justify-start ml-4 p-1">Weather: {weather}</p>
       <div className="flex flex-row-reverse justify-between">
         <img
-          src={`http://openweathermap.org/img/wn/${img}@2x.png`}
+          src={`https://openweathermap.org/img/wn/${img}@2x.png`}
           width="50"
           height="50"
           alt=""
