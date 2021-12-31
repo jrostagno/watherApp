@@ -3,7 +3,7 @@ import SearchBar from "../SearchBar/SearchBar";
 
 export default function Nav({ setCities, setNotFound, setIsLoading }) {
   return (
-    <div className="flex justify-between bg-zinc-800 items-center h-16">
+    <div className="flex justify-between bg-teal-900 items-center h-16">
       <h2 className="text-xl text-slate-50 relative left-7">
         The wheather App
       </h2>

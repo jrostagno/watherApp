@@ -17,6 +17,10 @@ export default function Cards({ cities, setCities }) {
             max={c.max}
             name={c.name}
             img={c.img}
+            humidity={c.humidity}
+            pressure={c.pressure}
+            wind={c.wind}
+            weather={c.weather}
           />
         </div>
       ))}

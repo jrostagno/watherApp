@@ -40,12 +40,12 @@ export default function SearchBar({ setCities, setNotFound, setIsLoading }) {
       <input
         type="search"
         className="bg-purple-white shadow rounded border-0 p-2"
-        placeholder="Search by name..."
+        placeholder="City, Country..."
         value={city}
         onChange={handleOnchange}
       />
 
-      <button className="  bg-zinc-800  hover:bg-gray-500 text-white font-bold py-2 px-4 rounded ml-5">
+      <button className="  bg-teal-900  hover:bg-teal-700 text-white font-bold py-2 px-4 rounded ml-5">
         Add
       </button>
     </form>

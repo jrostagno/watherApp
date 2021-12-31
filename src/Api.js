@@ -23,6 +23,8 @@ export const getCities = async (city) => {
         img: data.weather[0].icon,
         id: data.id,
         wind: data.wind.speed,
+        pressure: data.main.pressure,
+        humidity: data.main.humidity,
         temp: data.main.temp,
         name: data.name,
         weather: data.weather[0].main,
