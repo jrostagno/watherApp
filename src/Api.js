@@ -1,18 +1,13 @@
 import axios from "axios";
-
-const apikey = "4ae2636d8dfbdc3044bede63951a019b";
-
-// fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=4ae2636d8dfbdc3044bede63951a019b&units=metric`)
+const { REACT_APP_APIKEY_WATHERAPP } = process.env;
 
 export const getCities = async (city) => {
   try {
     const json = await axios.get(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${REACT_APP_APIKEY_WATHERAPP}&units=metric`
     );
 
     let data = json.data;
-    console.log(data);
-    console.log(data.cod);
 
     if (data.cod === "404") {
       return [];
