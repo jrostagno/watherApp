@@ -4,7 +4,7 @@ const { REACT_APP_APIKEY_WATHERAPP } = process.env;
 export const getCities = async (city) => {
   try {
     const json = await axios.get(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${REACT_APP_APIKEY_WATHERAPP}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${REACT_APP_APIKEY_WATHERAPP}&units=metric`
     );
 
     let data = json.data;
